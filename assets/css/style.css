@@ -11,7 +11,7 @@ ul {
 
 body {
     color: #000;
-    font-family: Helvetica,sans-serif;
+    font-family: Helvetica, sans-serif;
     font-size: 15px;
     line-height: 1.8;
 }
@@ -61,6 +61,8 @@ body {
     --textHeader: #fff;
     --textLinkHover: #ccc;
     --hoverSetup: rgba(255, 255, 255, 0.15);
+    position: relative;
+    z-index: 2;
 }
 
 #header.scroll {
@@ -105,7 +107,7 @@ body {
     flex: 1;
 }
 
-.header__logo svg{
+.header__logo svg {
     color: var(--logoHeader);
 }
 
@@ -138,21 +140,15 @@ body {
     position: relative;
 }
 
-.header__list-item-link:hover {
+.header__list-item:not(.header__list-item-link--active):hover .header__list-item-link {
     color: var(--textLinkHover);
 }
 
-.header__list-item:hover .header__list-item-link::before {
+.header__list-item:not(.header__list-item-link--active):hover .header__list-item-link::before {
     opacity: 1;
     width: 6px;
     margin-left: -3px;
     transform: scale(1);
-}
-
-.header__list-item .header__list-item-link::before {
-    width: 0;
-    margin-left: 0;
-    transform: scale(0.2);
 }
 
 .header__list-item-link::before {
@@ -161,26 +157,15 @@ body {
     position: absolute;
     background-color: var(--textHeader);
     height: 2px;
-    /* width: 18px; */
     left: 50%;
-    /* transform: scale(1); */
-    /* margin-left: -9px; */
     bottom: -5px;
     transition: all 0.3s;
+    width: 0;
+    margin-left: 0;
+    transform: scale(0.2);
 }
 
 .header__list-item-link--active .header__list-item-link::before {
-    opacity: 1;
-    width: 18px;
-    margin-left: -9px;
-    transform: scale(1);
-}
-
-.header__list-item-link--active:hover .header__list-item-link {
-    color: var(--textHeader);
-}
-
-.header__list-item-link--active:hover .header__list-item-link::before {
     opacity: 1;
     width: 18px;
     margin-left: -9px;
@@ -242,7 +227,7 @@ body {
     margin-right: 16px;
 }
 
-.header__setup-owner a{
+.header__setup-owner a {
     text-decoration: none;
     color: var(--textHeader);
     font-size: 14px;
@@ -288,7 +273,7 @@ body {
     margin: 0 16px 0 8px;
 }
 
-.header__setup-menu-icon i{
+.header__setup-menu-icon i {
     color: #333;
 }
 
@@ -297,7 +282,7 @@ body {
     height: 30px;
 }
 
-.header__setup-menu-img svg{
+.header__setup-menu-img svg {
     color: #666;
 }
 
@@ -342,7 +327,7 @@ body {
     cursor: pointer;
 }
 
-.header__setup-menu-verify li:first-child {
+.header__setup-menu-verify li.active {
     font-weight: bold;
 }
 
@@ -379,7 +364,7 @@ body {
     transform: scale(1);
     transition: 0.2s;
 }
-    
+
 .header-search__wrap {
     height: 100%;
     position: relative;
@@ -464,21 +449,21 @@ body {
     right: calc(27% + 5px);
 }
 
-.header-search__location:hover ~ .header-search__separate--one {
+.header-search__location:hover~.header-search__separate--one {
     display: none;
 }
 
-.header-search__rent-receive:hover ~ .header-search__separate--one,
-.header-search__rent-receive:hover ~ .header-search__separate--two {
+.header-search__rent-receive:hover~.header-search__separate--one,
+.header-search__rent-receive:hover~.header-search__separate--two {
     display: none;
 }
 
-.header-search__rent-return:hover ~ .header-search__separate--two,
-.header-search__rent-return:hover ~ .header-search__separate--three {
+.header-search__rent-return:hover~.header-search__separate--two,
+.header-search__rent-return:hover~.header-search__separate--three {
     display: none;
 }
 
-.header-search__guest:hover ~ .header-search__separate--three {
+.header-search__guest:hover~.header-search__separate--three {
     display: none;
 }
 
@@ -577,7 +562,7 @@ body {
     background-color: #000;
 }
 
-#header.scroll + #poster {
+#header.scroll+#poster {
     margin-top: 50px;
 }
 
@@ -633,6 +618,7 @@ img {
     margin-top: 16px;
     cursor: pointer;
 }
+
 .poster__text-btn-icon {
     font-size: 14px;
     margin-right: 4px;
@@ -938,7 +924,7 @@ img {
     border-top: 1px solid rgb(221, 217, 217);
 }
 
-.footer__copyright i{
+.footer__copyright i {
     font-weight: bold;
 }
 
@@ -988,16 +974,3 @@ img {
     font-size: 16px;
     padding: 0 12px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
